@@ -3,11 +3,11 @@ Title (header 1, actually)
   
   This is a Markdown document.
 
-## Medium header (header 2, actually)
+## Medium header
 
-It's easy to do *italics* or __make things bold__.
+*italics!*, __BOLD!__.
 
-> All models are wrong, but some are useful. An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem. Absolute certainty is a privilege of uneducated minds-and fanatics. It is, for scientific folk, an unattainable ideal. What you do every day matters more than what you do once in a while. We cannot expect anyone to know anything we didn't teach them ourselves. Enthusiasm is a form of social courage!
+> words words words
 
 Code block below. Just affects formatting here but we'll get to R Markdown for the real fun soon!
 
