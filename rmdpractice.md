@@ -21,9 +21,14 @@ library(dplyr)
 ##     intersect, setdiff, setequal, union
 ```
 
+```r
+library(EDAWR)
+library(tidyr)
+```
+
 I counted 2 red trucks on the highway.
 
-The arithmetic mean is equal to $\frac{1}{n} \sum{i=i}^{n} x_{i}$
+The arithmetic mean is equal to $\frac{1}{n} \sum{i=i}^{n} x_{i}$, or the summation of n numbers divided by n.
 
 
 ```r
@@ -31,30 +36,30 @@ xval <- c(1,2,3,4,5)
 yval <- c(8,3,2,5,8)
 df <- data.frame(xval, yval)
 
-df %>% ggvis(x = ~xval, y = ~yval) %>% layer_points()
+df %>% ggvis(x = ~xval, y = ~yval) %>% layer_points() #creates a plot!
 ```
 
-<!--html_preserve--><div id="plot_id117390939-container" class="ggvis-output-container">
-<div id="plot_id117390939" class="ggvis-output"></div>
+<!--html_preserve--><div id="plot_id552378565-container" class="ggvis-output-container">
+<div id="plot_id552378565" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id117390939_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id117390939" data-renderer="svg">SVG</a>
+<a id="plot_id552378565_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id552378565" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id117390939_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id117390939" data-renderer="canvas">Canvas</a>
+<a id="plot_id552378565_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id552378565" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id117390939_download" class="ggvis-download" data-plot-id="plot_id117390939">Download</a>
+<a id="plot_id552378565_download" class="ggvis-download" data-plot-id="plot_id552378565">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id117390939_spec = {
+var plot_id552378565_spec = {
   "data": [
     {
       "name": ".0",
@@ -177,7 +182,7 @@ var plot_id117390939_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id117390939").parseSpec(plot_id117390939_spec);
+ggvis.getPlot("plot_id552378565").parseSpec(plot_id552378565_spec);
 </script><!--/html_preserve-->
 
 
@@ -194,27 +199,27 @@ flights %>% left_join(airlines, by = "carrier") %>%
 ## vector, coercing into character vector
 ```
 
-<!--html_preserve--><div id="plot_id334056300-container" class="ggvis-output-container">
-<div id="plot_id334056300" class="ggvis-output"></div>
+<!--html_preserve--><div id="plot_id943256313-container" class="ggvis-output-container">
+<div id="plot_id943256313" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id334056300_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id334056300" data-renderer="svg">SVG</a>
+<a id="plot_id943256313_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id943256313" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id334056300_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id334056300" data-renderer="canvas">Canvas</a>
+<a id="plot_id943256313_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id943256313" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id334056300_download" class="ggvis-download" data-plot-id="plot_id334056300">Download</a>
+<a id="plot_id943256313_download" class="ggvis-download" data-plot-id="plot_id943256313">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id334056300_spec = {
+var plot_id943256313_spec = {
   "data": [
     {
       "name": ".0/group_by1/boxplot2_flat",
@@ -550,6 +555,164 @@ var plot_id334056300_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id334056300").parseSpec(plot_id334056300_spec);
+ggvis.getPlot("plot_id943256313").parseSpec(plot_id943256313_spec);
 </script><!--/html_preserve-->
+
+
+```r
+tb2 <- tb %>% mutate(tcases = child + adult + elderly) %>% filter(!is.na(tcases)) %>% group_by(country, year) %>% summarise(cases = sum(tcases)) %>% ungroup() 
+
+tb3 <- population %>% gather("year", "population", -1, convert = TRUE) %>% right_join(tb2, by = c("country", "year")) %>% mutate(rate = cases/population * 10000)
+
+china <- tb3 %>%  filter(country == "China")
+
+china %>% ggvis(~population, ~cases, fill := "red") %>% layer_points()
+```
+
+<!--html_preserve--><div id="plot_id400372696-container" class="ggvis-output-container">
+<div id="plot_id400372696" class="ggvis-output"></div>
+<div class="plot-gear-icon">
+<nav class="ggvis-control">
+<a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
+<ul class="ggvis-dropdown">
+<li>
+Renderer: 
+<a id="plot_id400372696_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id400372696" data-renderer="svg">SVG</a>
+ | 
+<a id="plot_id400372696_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id400372696" data-renderer="canvas">Canvas</a>
+</li>
+<li>
+<a id="plot_id400372696_download" class="ggvis-download" data-plot-id="plot_id400372696">Download</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+<script type="text/javascript">
+var plot_id400372696_spec = {
+  "data": [
+    {
+      "name": ".0",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "population": "number",
+          "cases": "number"
+        }
+      },
+      "values": "\"population\",\"cases\"\n1237531429,131194\n1247897092,168270\n1257021784,195895\n1265222536,214404\n1272915272,212258\n1280428583,213766\n1287890449,212766\n1295322020,194972\n1302810258,267280\n1310414386,384886\n1318176835,472719\n1326146433,468291\n1334343509,465877\n1342732604,462596\n1351247555,884477\n1359821465,869092\n1368440300,865059\n1377064907,858861\n1385566537,847176"
+    },
+    {
+      "name": "scale/x",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "domain": "number"
+        }
+      },
+      "values": "\"domain\"\n1230129673.6\n1392968292.4"
+    },
+    {
+      "name": "scale/y",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "domain": "number"
+        }
+      },
+      "values": "\"domain\"\n93529.85\n922141.15"
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "domain": {
+        "data": "scale/x",
+        "field": "data.domain"
+      },
+      "zero": false,
+      "nice": false,
+      "clamp": false,
+      "range": "width"
+    },
+    {
+      "name": "y",
+      "domain": {
+        "data": "scale/y",
+        "field": "data.domain"
+      },
+      "zero": false,
+      "nice": false,
+      "clamp": false,
+      "range": "height"
+    }
+  ],
+  "marks": [
+    {
+      "type": "symbol",
+      "properties": {
+        "update": {
+          "size": {
+            "value": 50
+          },
+          "fill": {
+            "value": "red"
+          },
+          "x": {
+            "scale": "x",
+            "field": "data.population"
+          },
+          "y": {
+            "scale": "y",
+            "field": "data.cases"
+          }
+        },
+        "ggvis": {
+          "data": {
+            "value": ".0"
+          }
+        }
+      },
+      "from": {
+        "data": ".0"
+      }
+    }
+  ],
+  "width": 672,
+  "height": 480,
+  "legends": [],
+  "axes": [
+    {
+      "type": "x",
+      "scale": "x",
+      "orient": "bottom",
+      "layer": "back",
+      "grid": true,
+      "title": "population"
+    },
+    {
+      "type": "y",
+      "scale": "y",
+      "orient": "left",
+      "layer": "back",
+      "grid": true,
+      "title": "cases"
+    }
+  ],
+  "padding": null,
+  "ggvis_opts": {
+    "keep_aspect": false,
+    "resizable": true,
+    "padding": {},
+    "duration": 250,
+    "renderer": "svg",
+    "hover_duration": 0,
+    "width": 672,
+    "height": 480
+  },
+  "handlers": null
+};
+ggvis.getPlot("plot_id400372696").parseSpec(plot_id400372696_spec);
+</script><!--/html_preserve-->
+
 
