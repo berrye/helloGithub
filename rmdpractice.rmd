@@ -22,7 +22,7 @@ xval <- c(1,2,3,4,5)
 yval <- c(8,3,2,5,8)
 df <- data.frame(xval, yval)
 
-df %>% ggvis(x = ~xval, y = ~yval) %>% layer_points()
+df %>% ggvis(x = ~xval, y = ~yval) %>% layer_points() #creates a plot!
 
 ```
 
