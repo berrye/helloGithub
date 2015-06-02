@@ -26,10 +26,12 @@ library(EDAWR)
 library(tidyr)
 ```
 
-I counted 2 red trucks on the highway.
 
-The arithmetic mean is equal to $\frac{1}{n} \sum{i=i}^{n} x_{i}$, or the summation of n numbers divided by n.
+Rmd can make equations like Latex: $\frac{1}{n} \sum{i=i}^{n} x_{i}$
 
+
+**plot 1**
+- made up data points
 
 ```r
 xval <- c(1,2,3,4,5)
@@ -39,27 +41,27 @@ df <- data.frame(xval, yval)
 df %>% ggvis(x = ~xval, y = ~yval) %>% layer_points() #creates a plot!
 ```
 
-<!--html_preserve--><div id="plot_id579005414-container" class="ggvis-output-container">
-<div id="plot_id579005414" class="ggvis-output"></div>
+<!--html_preserve--><div id="plot_id528071009-container" class="ggvis-output-container">
+<div id="plot_id528071009" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id579005414_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id579005414" data-renderer="svg">SVG</a>
+<a id="plot_id528071009_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id528071009" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id579005414_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id579005414" data-renderer="canvas">Canvas</a>
+<a id="plot_id528071009_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id528071009" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id579005414_download" class="ggvis-download" data-plot-id="plot_id579005414">Download</a>
+<a id="plot_id528071009_download" class="ggvis-download" data-plot-id="plot_id528071009">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id579005414_spec = {
+var plot_id528071009_spec = {
   "data": [
     {
       "name": ".0",
@@ -182,10 +184,11 @@ var plot_id579005414_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id579005414").parseSpec(plot_id579005414_spec);
+ggvis.getPlot("plot_id528071009").parseSpec(plot_id528071009_spec);
 </script><!--/html_preserve-->
 
-
+**plot 2**
+-flights example from R tutorial
 
 ```r
 flights %>% left_join(airlines, by = "carrier") %>% 
@@ -199,27 +202,27 @@ flights %>% left_join(airlines, by = "carrier") %>%
 ## vector, coercing into character vector
 ```
 
-<!--html_preserve--><div id="plot_id669646020-container" class="ggvis-output-container">
-<div id="plot_id669646020" class="ggvis-output"></div>
+<!--html_preserve--><div id="plot_id756877602-container" class="ggvis-output-container">
+<div id="plot_id756877602" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id669646020_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id669646020" data-renderer="svg">SVG</a>
+<a id="plot_id756877602_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id756877602" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id669646020_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id669646020" data-renderer="canvas">Canvas</a>
+<a id="plot_id756877602_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id756877602" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id669646020_download" class="ggvis-download" data-plot-id="plot_id669646020">Download</a>
+<a id="plot_id756877602_download" class="ggvis-download" data-plot-id="plot_id756877602">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id669646020_spec = {
+var plot_id756877602_spec = {
   "data": [
     {
       "name": ".0/group_by1/boxplot2_flat",
@@ -555,9 +558,11 @@ var plot_id669646020_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id669646020").parseSpec(plot_id669646020_spec);
+ggvis.getPlot("plot_id756877602").parseSpec(plot_id756877602_spec);
 </script><!--/html_preserve-->
 
+**plot 3**
+-china example from R tutorial
 
 ```r
 tb2 <- tb %>% mutate(tcases = child + adult + elderly) %>% filter(!is.na(tcases)) %>% 
@@ -571,27 +576,27 @@ china <- tb3 %>%  filter(country == "China")
 china %>% ggvis(~population, ~cases, fill := "red") %>% layer_points()
 ```
 
-<!--html_preserve--><div id="plot_id718112641-container" class="ggvis-output-container">
-<div id="plot_id718112641" class="ggvis-output"></div>
+<!--html_preserve--><div id="plot_id173430983-container" class="ggvis-output-container">
+<div id="plot_id173430983" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id718112641_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id718112641" data-renderer="svg">SVG</a>
+<a id="plot_id173430983_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id173430983" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id718112641_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id718112641" data-renderer="canvas">Canvas</a>
+<a id="plot_id173430983_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id173430983" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id718112641_download" class="ggvis-download" data-plot-id="plot_id718112641">Download</a>
+<a id="plot_id173430983_download" class="ggvis-download" data-plot-id="plot_id173430983">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id718112641_spec = {
+var plot_id173430983_spec = {
   "data": [
     {
       "name": ".0",
@@ -714,7 +719,7 @@ var plot_id718112641_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id718112641").parseSpec(plot_id718112641_spec);
+ggvis.getPlot("plot_id173430983").parseSpec(plot_id173430983_spec);
 </script><!--/html_preserve-->
 
 
