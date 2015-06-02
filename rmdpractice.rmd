@@ -17,7 +17,7 @@ library(tidyr)
 
 Rmd can make equations like Latex: $\frac{1}{n} \sum{i=i}^{n} x_{i}$
 
-It can also include links like this: [linked phrase](http://rmarkdown.rstudio.com/authoring_basics.html)
+It can also include links [like this](http://rmarkdown.rstudio.com/authoring_basics.html)
 
 # **Plot 1**
 - made up data points

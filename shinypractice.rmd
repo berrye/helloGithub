@@ -1,0 +1,81 @@
+---
+title: "shinypractice"
+runtime: shiny
+output: html_document
+---
+```{r load, echo=FALSE, message=FALSE, warning = FALSE}
+library(ggvis)
+library(EDAWR)
+library(nycflights13)
+library(knitr)
+library(dplyr)
+library(tidyr)
+library(dpcFormatSE)
+library(shiny)
+
+tb2 <- tb %>% mutate(tcases = child + adult + elderly) %>% filter(!is.na(tcases)) %>% 
+  group_by(country, year) %>% summarise(cases = sum(tcases)) %>% ungroup() 
+
+tb3 <- population %>% gather("year", "population", -1, convert = TRUE) %>% 
+  right_join(tb2, by = c("country", "year")) %>% mutate(rate = cases/population * 10000)
+
+china <- tb3 %>%  filter(country == "China")
+
+opts_chunk$set(echo = FALSE, message = FALSE)
+```
+
+## Interactive plot example!
+- from Rstudio
+
+```{r}
+inputPanel(
+  selectInput("n_breaks", label = "Number of bins:",
+              choices = c(10, 20, 30, 40, 50, 100), selected = 50),
+  
+  sliderInput("bw_adjust", label = "Bandwidth adjustment:",
+              min = 0.1, max = 3, value = 1, step = 0.1)
+)
+
+renderPlot({
+  hist(faithful$eruptions, probability = TRUE, breaks = as.numeric(input$n_breaks),
+       xlab = "Duration (minutes)", main = "Geyser eruption duration")
+  
+  dens <- density(faithful$eruptions, adjust = input$bw_adjust)
+  lines(dens, col = "blue")
+})
+```
+
+##Other non-interactive plot example
+```{r}
+china %>%  ggvis(~year, ~rate) %>% layer_points(fill = ~population) %>% layer_lines(stroke := "red") %>% layer_smooths(stroke := "green")
+```
+
+## trying to make a box
+
+```{r key_points}
+inthebox <- 
+'
+- line 1
+
+- line 222
+
+- and line 3 hooray
+'
+
+panel_markdown_section("Awesome points", inthebox)
+```
+
+## Rstudio's shiny tutorial
+
+```{r}
+#runExample("01_hello")
+
+```
+
+
+
+
+
+
+
+
