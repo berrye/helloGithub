@@ -14,7 +14,6 @@ Title (header 1, actually)
 Editing in github!
 
 
-Code block below. Just affects formatting here but we'll get to R Markdown for the real fun soon!
 
 ```
 x <- 3 * 4
