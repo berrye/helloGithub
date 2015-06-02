@@ -89,33 +89,31 @@ library(dplyr)</code></pre>
 <pre class="r"><code>library(EDAWR)
 library(tidyr)</code></pre>
 <p>Rmd can make equations like Latex: <span class="math">\(\frac{1}{n} \sum{i=i}^{n} x_{i}\)</span></p>
-<p><strong>plot 1</strong> - made up data points</p>
-<pre class="r"><code>xval &lt;- c(1,2,3,4,5)
-yval &lt;- c(8,3,2,5,8)
-df &lt;- data.frame(xval, yval)
-
-df %&gt;% ggvis(x = ~xval, y = ~yval) %&gt;% layer_points() #creates a plot!</code></pre>
-<p><div id="plot_id528071009-container" class="ggvis-output-container">
-<div id="plot_id528071009" class="ggvis-output"></div>
+<p>It can also include links like this: <a href="http://rmarkdown.rstudio.com/authoring_basics.html">linked phrase</a></p>
+<div id="plot-1" class="section level1">
+<h1><strong>Plot 1</strong></h1>
+<ul>
+<li>made up data points <div id="plot_id323716012-container" class="ggvis-output-container">
+<div id="plot_id323716012" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id528071009_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id528071009" data-renderer="svg">SVG</a>
+<a id="plot_id323716012_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id323716012" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id528071009_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id528071009" data-renderer="canvas">Canvas</a>
+<a id="plot_id323716012_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id323716012" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id528071009_download" class="ggvis-download" data-plot-id="plot_id528071009">Download</a>
+<a id="plot_id323716012_download" class="ggvis-download" data-plot-id="plot_id323716012">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id528071009_spec = {
+var plot_id323716012_spec = {
   "data": [
     {
       "name": ".0",
@@ -238,36 +236,38 @@ var plot_id528071009_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id528071009").parseSpec(plot_id528071009_spec);
-</script></p>
-<p><strong>plot 2</strong> -flights example from R tutorial</p>
-<pre class="r"><code>flights %&gt;% left_join(airlines, by = &quot;carrier&quot;) %&gt;% 
-  droplevels() %&gt;% 
-  filter(!is.na(arr_delay)) %&gt;%  
-  ggvis(x = ~name, y = ~arr_delay, fill = ~name) %&gt;% layer_boxplots()</code></pre>
+ggvis.getPlot("plot_id323716012").parseSpec(plot_id323716012_spec);
+</script></li>
+</ul>
+</div>
+<div id="plot-2" class="section level1">
+<h1><strong>Plot 2</strong></h1>
+<ul>
+<li>flights example from R tutorial</li>
+</ul>
 <pre><code>## Warning in left_join_impl(x, y, by$x, by$y): joining factor and character
 ## vector, coercing into character vector</code></pre>
-<p><div id="plot_id756877602-container" class="ggvis-output-container">
-<div id="plot_id756877602" class="ggvis-output"></div>
+<p><div id="plot_id335631057-container" class="ggvis-output-container">
+<div id="plot_id335631057" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id756877602_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id756877602" data-renderer="svg">SVG</a>
+<a id="plot_id335631057_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id335631057" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id756877602_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id756877602" data-renderer="canvas">Canvas</a>
+<a id="plot_id335631057_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id335631057" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id756877602_download" class="ggvis-download" data-plot-id="plot_id756877602">Download</a>
+<a id="plot_id335631057_download" class="ggvis-download" data-plot-id="plot_id335631057">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id756877602_spec = {
+var plot_id335631057_spec = {
   "data": [
     {
       "name": ".0/group_by1/boxplot2_flat",
@@ -603,39 +603,33 @@ var plot_id756877602_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id756877602").parseSpec(plot_id756877602_spec);
+ggvis.getPlot("plot_id335631057").parseSpec(plot_id335631057_spec);
 </script></p>
-<p><strong>plot 3</strong> -china example from R tutorial</p>
-<pre class="r"><code>tb2 &lt;- tb %&gt;% mutate(tcases = child + adult + elderly) %&gt;% filter(!is.na(tcases)) %&gt;% 
-  group_by(country, year) %&gt;% summarise(cases = sum(tcases)) %&gt;% ungroup() 
-
-tb3 &lt;- population %&gt;% gather(&quot;year&quot;, &quot;population&quot;, -1, convert = TRUE) %&gt;% 
-  right_join(tb2, by = c(&quot;country&quot;, &quot;year&quot;)) %&gt;% mutate(rate = cases/population * 10000)
-
-china &lt;- tb3 %&gt;%  filter(country == &quot;China&quot;)
-
-china %&gt;% ggvis(~population, ~cases, fill := &quot;red&quot;) %&gt;% layer_points()</code></pre>
-<p><div id="plot_id173430983-container" class="ggvis-output-container">
-<div id="plot_id173430983" class="ggvis-output"></div>
+</div>
+<div id="plot-3" class="section level1">
+<h1><strong>Plot 3</strong></h1>
+<ul>
+<li>china example from R tutorial <div id="plot_id499323988-container" class="ggvis-output-container">
+<div id="plot_id499323988" class="ggvis-output"></div>
 <div class="plot-gear-icon">
 <nav class="ggvis-control">
 <a class="ggvis-dropdown-toggle" title="Controls" onclick="return false;"></a>
 <ul class="ggvis-dropdown">
 <li>
 Renderer: 
-<a id="plot_id173430983_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id173430983" data-renderer="svg">SVG</a>
+<a id="plot_id499323988_renderer_svg" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id499323988" data-renderer="svg">SVG</a>
  | 
-<a id="plot_id173430983_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id173430983" data-renderer="canvas">Canvas</a>
+<a id="plot_id499323988_renderer_canvas" class="ggvis-renderer-button" onclick="return false;" data-plot-id="plot_id499323988" data-renderer="canvas">Canvas</a>
 </li>
 <li>
-<a id="plot_id173430983_download" class="ggvis-download" data-plot-id="plot_id173430983">Download</a>
+<a id="plot_id499323988_download" class="ggvis-download" data-plot-id="plot_id499323988">Download</a>
 </li>
 </ul>
 </nav>
 </div>
 </div>
 <script type="text/javascript">
-var plot_id173430983_spec = {
+var plot_id499323988_spec = {
   "data": [
     {
       "name": ".0",
@@ -758,8 +752,21 @@ var plot_id173430983_spec = {
   },
   "handlers": null
 };
-ggvis.getPlot("plot_id173430983").parseSpec(plot_id173430983_spec);
-</script></p>
+ggvis.getPlot("plot_id499323988").parseSpec(plot_id499323988_spec);
+</script></li>
+</ul>
+</div>
+<div id="plot-4" class="section level1">
+<h1><strong>Plot 4</strong></h1>
+<ul>
+<li>same as first plot, but using plot instead of ggvis</li>
+</ul>
+<pre class="r"><code>xval &lt;- c(1,2,3,4,5)
+yval &lt;- c(8,3,2,5,8)
+
+plot(xval, yval)</code></pre>
+<p><img src="data:image/png;base64,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" /></p>
+</div>
 
 
 </div>

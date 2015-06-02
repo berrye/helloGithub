@@ -17,10 +17,11 @@ library(tidyr)
 
 Rmd can make equations like Latex: $\frac{1}{n} \sum{i=i}^{n} x_{i}$
 
+It can also include links like this: [linked phrase](http://rmarkdown.rstudio.com/authoring_basics.html)
 
-**plot 1**
+# **Plot 1**
 - made up data points
-```{r}
+```{r echo = FALSE}
 xval <- c(1,2,3,4,5)
 yval <- c(8,3,2,5,8)
 df <- data.frame(xval, yval)
@@ -29,9 +30,9 @@ df %>% ggvis(x = ~xval, y = ~yval) %>% layer_points() #creates a plot!
 
 ```
 
-**plot 2**
--flights example from R tutorial
-```{r}
+# **Plot 2**
+- flights example from R tutorial
+```{r echo = FALSE}
 flights %>% left_join(airlines, by = "carrier") %>% 
   droplevels() %>% 
   filter(!is.na(arr_delay)) %>%  
@@ -39,9 +40,9 @@ flights %>% left_join(airlines, by = "carrier") %>%
 
 ```
 
-**plot 3**
--china example from R tutorial
-```{r}
+# **Plot 3**
+- china example from R tutorial
+```{r echo = FALSE, eval = TRUE}
 tb2 <- tb %>% mutate(tcases = child + adult + elderly) %>% filter(!is.na(tcases)) %>% 
   group_by(country, year) %>% summarise(cases = sum(tcases)) %>% ungroup() 
 
@@ -54,4 +55,12 @@ china %>% ggvis(~population, ~cases, fill := "red") %>% layer_points()
 
 ```
 
+# **Plot 4**
+- same as first plot, but using plot instead of ggvis
+```{r}
+xval <- c(1,2,3,4,5)
+yval <- c(8,3,2,5,8)
+
+plot(xval, yval)
+```
 
