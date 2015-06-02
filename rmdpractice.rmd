@@ -1,0 +1,37 @@
+---
+title: "Rmd Practice"
+output: 
+  html_document: 
+    keep_md: yes
+---
+
+My name is Emily. 
+```{r}
+library(ggvis)
+library(nycflights13)
+library(dplyr)
+
+```
+
+I counted `r 1 + 1` red trucks on the highway.
+
+The arithmetic mean is equal to $\frac{1}{n} \sum{i=i}^{n} x_{i}$, or the summation of n numbers divided by n.
+
+```{r}
+xval <- c(1,2,3,4,5)
+yval <- c(8,3,2,5,8)
+df <- data.frame(xval, yval)
+
+df %>% ggvis(x = ~xval, y = ~yval) %>% layer_points()
+
+```
+
+
+```{r}
+flights %>% left_join(airlines, by = "carrier") %>% 
+  droplevels() %>% 
+  filter(!is.na(arr_delay)) %>%  
+  ggvis(x = ~name, y = ~arr_delay, fill = ~name) %>% layer_boxplots()
+
+```
+
