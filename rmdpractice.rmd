@@ -10,7 +10,8 @@ My name is Emily.
 library(ggvis)
 library(nycflights13)
 library(dplyr)
-
+library(EDAWR)
+library(tidyr)
 ```
 
 I counted `r 1 + 1` red trucks on the highway.
@@ -34,4 +35,16 @@ flights %>% left_join(airlines, by = "carrier") %>%
   ggvis(x = ~name, y = ~arr_delay, fill = ~name) %>% layer_boxplots()
 
 ```
+
+```{r}
+tb2 <- tb %>% mutate(tcases = child + adult + elderly) %>% filter(!is.na(tcases)) %>% group_by(country, year) %>% summarise(cases = sum(tcases)) %>% ungroup() 
+
+tb3 <- population %>% gather("year", "population", -1, convert = TRUE) %>% right_join(tb2, by = c("country", "year")) %>% mutate(rate = cases/population * 10000)
+
+china <- tb3 %>%  filter(country == "China")
+
+china %>% ggvis(~population, ~cases, fill := "red") %>% layer_points()
+
+```
+
 
