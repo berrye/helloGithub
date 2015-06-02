@@ -7,7 +7,12 @@ Title (header 1, actually)
 
 *italics!*, __BOLD!__.
 
+<<<<<<< HEAD
 > words words words
+=======
+> All models are wrong, but some are useful. An approximate answer to the right problem is worth a good deal more than an exact answer to an approximate problem. Absolute certainty is a privilege of uneducated minds-and fanatics. It is, for scientific folk, an unattainable ideal. What you do every day matters more than what you do once in a while. We cannot expect anyone to know anything we didn't teach them ourselves. Enthusiasm is a form of social courage!
+Editing in github!
+>>>>>>> 3053ab9831e89f7138ca8e26fe7e1c322b087d1c
 
 Code block below. Just affects formatting here but we'll get to R Markdown for the real fun soon!
 
